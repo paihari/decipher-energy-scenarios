@@ -2,6 +2,7 @@ import asyncio
 from typing import Dict, Any, List, Optional
 import re
 from agents.base_agent import BaseAgent, AgentResponse
+from agents.language_translator_agent import LanguageTranslatorAgent
 
 class OrchestratorAgent(BaseAgent):
     def __init__(self, openai_api_key: str, agents_registry: Dict[str, BaseAgent] = None):
@@ -11,6 +12,9 @@ class OrchestratorAgent(BaseAgent):
             description="Central coordinator that routes queries to appropriate specialist agents",
             openai_api_key=openai_api_key
         )
+        
+        # Initialize built-in language translator
+        self.translator = LanguageTranslatorAgent(openai_api_key)
         
     def register_agent(self, agent: BaseAgent):
         """Register a specialist agent."""
@@ -56,17 +60,72 @@ Adapt your communication style based on user type:
 """
     
     async def process_query(self, query: str, context: Optional[Dict[str, Any]] = None) -> AgentResponse:
-        """Process query and route to appropriate agents."""
-        # Analyze query to determine routing
-        routing_decision = await self._analyze_query_routing(query, context)
+        """Process query with multilingual support and route to appropriate agents."""
+        # Get user language from context
+        user_language = context.get("language", "en") if context else "en"
+        original_query = query
         
-        # Route to appropriate agents
-        agent_responses = await self._route_to_agents(query, routing_decision, context)
-        
-        # Synthesize final response
-        final_response = await self._synthesize_response(query, agent_responses, routing_decision)
-        
-        return final_response
+        try:
+            # Step 1: Detect query language and translate to English for processing
+            query_language = await self.translator.detect_language(query)
+            
+            if query_language != "en":
+                # Translate query to English for agent processing
+                query = await self.translator.translate_to_english(query, query_language)
+                
+            # Step 2: Analyze query to determine routing
+            routing_decision = await self._analyze_query_routing(query, context)
+            
+            # Step 3: Route to appropriate agents (using English query)
+            agent_responses = await self._route_to_agents(query, routing_decision, context)
+            
+            # Step 4: Synthesize response in English first
+            english_response = await self._synthesize_response(query, agent_responses, routing_decision)
+            
+            # Step 5: Translate final response to user's preferred language
+            if user_language != "en":
+                translated_content = await self.translator.translate_response(
+                    english_response.content, user_language
+                )
+                
+                # Translate suggestions if they exist
+                translated_suggestions = []
+                if english_response.suggestions:
+                    for suggestion in english_response.suggestions:
+                        translated_suggestion = await self.translator.translate_response(
+                            suggestion, user_language
+                        )
+                        translated_suggestions.append(translated_suggestion)
+                
+                # Create multilingual response
+                final_response = AgentResponse(
+                    content=translated_content,
+                    confidence=english_response.confidence,
+                    data_sources=english_response.data_sources,
+                    reasoning=f"Multilingual processing: Query detected as {self.translator.supported_languages.get(query_language, 'unknown')}, " +
+                             f"processed in English, translated to {self.translator.supported_languages.get(user_language, 'unknown')}. " +
+                             (english_response.reasoning or ""),
+                    suggestions=translated_suggestions
+                )
+            else:
+                final_response = english_response
+                
+            return final_response
+            
+        except Exception as e:
+            # Fallback: return error in user's language
+            error_message = f"Error processing multilingual query: {str(e)}"
+            if user_language != "en":
+                try:
+                    error_message = await self.translator.translate_response(error_message, user_language)
+                except:
+                    pass  # Use English error if translation fails
+                    
+            return AgentResponse(
+                content=error_message,
+                confidence=0.0,
+                reasoning=f"Multilingual processing failed: {str(e)}"
+            )
     
     async def _analyze_query_routing(self, query: str, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Analyze query to determine which agents to route to."""

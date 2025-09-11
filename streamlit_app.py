@@ -18,6 +18,7 @@ from agents.data_interpreter_agent import DataInterpreterAgent
 from agents.scenario_analyst_agent import ScenarioAnalystAgent
 from agents.document_intelligence_agent import DocumentIntelligenceAgent
 from agents.policy_context_agent import PolicyContextAgent
+from agents.language_translator_agent import LanguageTranslatorAgent
 
 # Language translations
 TRANSLATIONS = {
@@ -28,6 +29,7 @@ TRANSLATIONS = {
         "user_profile": "🎯 User Profile",
         "who_are_you": "Who are you?",
         "user_help": "This helps us tailor our responses to your needs",
+        "multilingual_note": "💡 You can ask questions in any language - English, German, French, or Italian!",
         "available_agents": "🤖 Available Agents",
         "agents_desc": """
 - **📊 Data Interpreter**: Statistics & trends
@@ -82,6 +84,7 @@ TRANSLATIONS = {
         "user_profile": "🎯 Benutzerprofil",
         "who_are_you": "Wer sind Sie?",
         "user_help": "Dies hilft uns, unsere Antworten auf Ihre Bedürfnisse zuzuschneiden",
+        "multilingual_note": "💡 Sie können Fragen in jeder Sprache stellen - Deutsch, Englisch, Französisch oder Italienisch!",
         "available_agents": "🤖 Verfügbare Agenten",
         "agents_desc": """
 - **📊 Daten-Interpreter**: Statistiken & Trends
@@ -128,6 +131,116 @@ TRANSLATIONS = {
             "Welche Politiken fördern erneuerbare Energien?",
             "Erkläre die verwendete Methodik in den Szenarien"
         ]
+    },
+    "fr": {
+        "title": "🇨🇭 Système de Décryptage des Scénarios Énergétiques Suisses",
+        "subtitle": "*Rendre les données de transition énergétique suisse accessibles à tous*",
+        "language": "Langue",
+        "user_profile": "🎯 Profil Utilisateur",
+        "who_are_you": "Qui êtes-vous ?",
+        "user_help": "Cela nous aide à adapter nos réponses à vos besoins",
+        "multilingual_note": "💡 Vous pouvez poser des questions dans n'importe quelle langue - français, anglais, allemand ou italien !",
+        "available_agents": "🤖 Agents Disponibles",
+        "agents_desc": """
+- **📊 Interpréteur de Données**: Statistiques & tendances
+- **🔮 Analyste de Scénarios**: Comparer les trajectoires
+- **📄 Intelligence Documentaire**: Rapports techniques
+- **🏛️ Contexte Politique**: Réglementations & mise en œuvre
+        """,
+        "example_queries": "💡 Exemples de Requêtes",
+        "try_example": "Essayez un exemple :",
+        "use_example": "Utiliser l'Exemple",
+        "ask_question": "💬 Posez Votre Question",
+        "enter_question": "Saisissez votre question sur les scénarios énergétiques suisses :",
+        "placeholder": "ex. Comment évoluent les émissions dans le scénario ZERO ?",
+        "analyze": "🔄 Analyser",
+        "quick_stats": "📈 Statistiques Rapides",
+        "data_files": "Fichiers de Données",
+        "synthesis_files": "Fichiers de Synthèse",
+        "transformation_files": "Fichiers de Transformation",
+        "data_range": "Plage de Données",
+        "conversation_history": "📝 Historique des Conversations",
+        "answer": "**Réponse :**",
+        "confidence": "Confiance",
+        "sources": "**Sources :**",
+        "suggestions": "**Suggestions :**",
+        "processing": "🔄 Traitement de votre requête en tant que {}...",
+        "analysis_complete": "✅ Analyse Terminée !",
+        "response": "🎯 Réponse",
+        "data_sources": "**📊 Sources de Données :**",
+        "followup_ideas": "**💡 Idées de Suite :**",
+        "analysis_details": "🧠 Détails de l'Analyse",
+        "error_processing": "❌ Erreur lors du traitement de la requête : {}",
+        "check_config": "Veuillez vérifier votre configuration et réessayer.",
+        "error_loading": "Erreur lors du chargement des informations système : {}",
+        "user_types": {
+            "citizen": "Citoyen/ne",
+            "journalist": "Journaliste",
+            "student": "Étudiant/e",
+            "policymaker": "Décideur/se Politique"
+        },
+        "examples": [
+            "Quelles sont les émissions de CO2 de la Suisse en 2030 ?",
+            "Comparer les scénarios ZERO vs WWB",
+            "Comment progresse l'électrification des transports ?",
+            "Quelles politiques soutiennent les énergies renouvelables ?",
+            "Expliquer la méthodologie utilisée dans les scénarios"
+        ]
+    },
+    "it": {
+        "title": "🇨🇭 Sistema di Decrittazione degli Scenari Energetici Svizzeri",
+        "subtitle": "*Rendere i dati di transizione energetica svizzera accessibili a tutti*",
+        "language": "Lingua",
+        "user_profile": "🎯 Profilo Utente",
+        "who_are_you": "Chi sei?",
+        "user_help": "Questo ci aiuta ad adattare le nostre risposte alle tue esigenze",
+        "multilingual_note": "💡 Puoi fare domande in qualsiasi lingua - italiano, inglese, tedesco o francese!",
+        "available_agents": "🤖 Agenti Disponibili",
+        "agents_desc": """
+- **📊 Interprete dei Dati**: Statistiche & tendenze
+- **🔮 Analista di Scenari**: Confrontare i percorsi
+- **📄 Intelligenza Documentale**: Rapporti tecnici
+- **🏛️ Contesto Politico**: Regolamentazioni & implementazione
+        """,
+        "example_queries": "💡 Esempi di Query",
+        "try_example": "Prova un esempio:",
+        "use_example": "Usa Esempio",
+        "ask_question": "💬 Fai la Tua Domanda",
+        "enter_question": "Inserisci la tua domanda sugli scenari energetici svizzeri:",
+        "placeholder": "es. Come cambiano le emissioni nello scenario ZERO?",
+        "analyze": "🔄 Analizza",
+        "quick_stats": "📈 Statistiche Veloci",
+        "data_files": "File di Dati",
+        "synthesis_files": "File di Sintesi",
+        "transformation_files": "File di Trasformazione",
+        "data_range": "Intervallo di Dati",
+        "conversation_history": "📝 Cronologia Conversazioni",
+        "answer": "**Risposta:**",
+        "confidence": "Confidenza",
+        "sources": "**Fonti:**",
+        "suggestions": "**Suggerimenti:**",
+        "processing": "🔄 Elaborazione della tua richiesta come {}...",
+        "analysis_complete": "✅ Analisi Completata!",
+        "response": "🎯 Risposta",
+        "data_sources": "**📊 Fonti di Dati:**",
+        "followup_ideas": "**💡 Idee di Seguito:**",
+        "analysis_details": "🧠 Dettagli dell'Analisi",
+        "error_processing": "❌ Errore nell'elaborazione della richiesta: {}",
+        "check_config": "Controlla la tua configurazione e riprova.",
+        "error_loading": "Errore nel caricamento delle informazioni di sistema: {}",
+        "user_types": {
+            "citizen": "Cittadino/a",
+            "journalist": "Giornalista",
+            "student": "Studente/essa",
+            "policymaker": "Responsabile Politico/a"
+        },
+        "examples": [
+            "Quali sono le emissioni di CO2 della Svizzera nel 2030?",
+            "Confronta gli scenari ZERO vs WWB",
+            "Come progredisce l'elettrificazione dei trasporti?",
+            "Quali politiche supportano le energie rinnovabili?",
+            "Spiega la metodologia utilizzata negli scenari"
+        ]
     }
 }
 
@@ -170,9 +283,24 @@ def main():
     if "language" not in st.session_state:
         st.session_state.language = "en"
     
-    # Header
-    st.title(get_text("title", st.session_state.language))
-    st.markdown(get_text("subtitle", st.session_state.language))
+    # Header with logos
+    col1, col2, col3 = st.columns([1, 4, 1])
+    
+    with col1:
+        try:
+            st.image("images/enregy-center.jpg", width=150)
+        except:
+            st.write("⚡")  # Fallback if image not found
+    
+    with col2:
+        st.title(get_text("title", st.session_state.language))
+        st.markdown(get_text("subtitle", st.session_state.language))
+    
+    with col3:
+        try:
+            st.image("images/ETH-Logo.jpg", width=150)
+        except:
+            st.write("🏛️")  # Fallback if image not found
     
     # Sidebar
     with st.sidebar:
@@ -186,6 +314,9 @@ def main():
             index=0,
             help=get_text("user_help", st.session_state.language)
         )
+        
+        # Multilingual support note
+        st.info(get_text("multilingual_note", st.session_state.language))
         
         st.header(get_text("available_agents", st.session_state.language))
         st.markdown(get_text("agents_desc", st.session_state.language))
@@ -206,9 +337,9 @@ def main():
         st.markdown("---")
         lang = st.selectbox(
             "🌍 " + get_text("language", st.session_state.language),
-            options=["en", "de"],
-            format_func=lambda x: "🇬🇧 English" if x == "en" else "🇩🇪 Deutsch",
-            index=0 if st.session_state.language == "en" else 1,
+            options=["en", "de", "fr", "it"],
+            format_func=lambda x: "🇬🇧 English" if x == "en" else "🇩🇪 Deutsch" if x == "de" else "🇫🇷 Français" if x == "fr" else "🇮🇹 Italiano",
+            index=0 if st.session_state.language == "en" else (1 if st.session_state.language == "de" else (2 if st.session_state.language == "fr" else 3)),
             key="lang_selector"
         )
         if lang != st.session_state.language:
@@ -343,6 +474,10 @@ def process_query(query: str, user_type: str, language: str):
                         remaining = len(response.data_sources) - 3
                         if language == "de":
                             st.write(f"... und {remaining} weitere")
+                        elif language == "fr":
+                            st.write(f"... et {remaining} de plus")
+                        elif language == "it":
+                            st.write(f"... e {remaining} di più")
                         else:
                             st.write(f"... and {remaining} more")
             
