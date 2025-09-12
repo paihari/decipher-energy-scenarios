@@ -1,0 +1,50 @@
+erDiagram
+    SCENARIOS ||--o{ EMISSIONS : contains
+    SCENARIOS ||--o{ ENERGY_CONSUMPTION : contains  
+    SCENARIOS ||--o{ ELECTRICITY : contains
+    SCENARIOS ||--o{ COSTS : contains
+    
+    EMISSIONS ||--o{ CO2 : includes
+    EMISSIONS ||--o{ CH4 : includes
+    EMISSIONS ||--o{ N2O : includes
+    
+    ENERGY_CONSUMPTION ||--o{ SECTORS : "broken down by"
+    SECTORS ||--o{ HOUSEHOLDS : includes
+    SECTORS ||--o{ INDUSTRY : includes
+    SECTORS ||--o{ TRANSPORT : includes
+    SECTORS ||--o{ SERVICES : includes
+
+    SCENARIOS {
+        string scenario_name
+        string variant
+        int year_range
+        string description
+    }
+    
+    EMISSIONS {
+        float co2_value
+        float ch4_value  
+        float n2o_value
+        string unit
+    }
+    
+    ENERGY_CONSUMPTION {
+        float primary_energy
+        float final_energy
+        string fuel_type
+        string purpose
+    }
+    
+    ELECTRICITY {
+        float generation
+        float consumption
+        string technology
+        float capacity
+    }
+    
+    COSTS {
+        float investment
+        float operation
+        float maintenance
+        string currency
+    }

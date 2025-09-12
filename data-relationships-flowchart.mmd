@@ -1,0 +1,43 @@
+flowchart TD
+    A[📊 SCENARIOS<br/>ZERO-Basis, WWB<br/>Variants & Years] --> B[🌫️ EMISSIONS<br/>GHG Tracking]
+    A --> C[⚡ ENERGY<br/>CONSUMPTION<br/>Primary & Final]
+    A --> D[🔌 ELECTRICITY<br/>Generation & Grid]
+    A --> E[💰 COSTS<br/>Investment & Operation]
+    
+    B --> B1[CO2<br/>Carbon Dioxide]
+    B --> B2[CH4<br/>Methane]
+    B --> B3[N2O<br/>Nitrous Oxide]
+    
+    C --> C1[🏘️ SECTORS<br/>Breakdown]
+    C1 --> C1A[🏠 HOUSEHOLDS<br/>Residential]
+    C1 --> C1B[🏭 INDUSTRY<br/>Manufacturing]
+    C1 --> C1C[🚗 TRANSPORT<br/>Mobility]
+    C1 --> C1D[🏢 SERVICES<br/>Commercial]
+    
+    D --> D1[🔋 Generation<br/>Technologies]
+    D --> D2[📈 Consumption<br/>by Sector]
+    
+    E --> E1[💵 Investment<br/>Capital Costs]
+    E --> E2[🔧 Operation<br/>Running Costs]
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:3px
+    style B fill:#ffebee,stroke:#c62828,stroke-width:2px
+    style C fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    style E fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    
+    style B1 fill:#ffcdd2,stroke:#d32f2f
+    style B2 fill:#ffcdd2,stroke:#d32f2f
+    style B3 fill:#ffcdd2,stroke:#d32f2f
+    
+    style C1 fill:#c8e6c9,stroke:#388e3c
+    style C1A fill:#dcedc8,stroke:#689f38
+    style C1B fill:#dcedc8,stroke:#689f38
+    style C1C fill:#dcedc8,stroke:#689f38
+    style C1D fill:#dcedc8,stroke:#689f38
+    
+    style D1 fill:#ffe0b2,stroke:#f57c00
+    style D2 fill:#ffe0b2,stroke:#f57c00
+    
+    style E1 fill:#e1bee7,stroke:#8e24aa
+    style E2 fill:#e1bee7,stroke:#8e24aa
