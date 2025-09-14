@@ -10,7 +10,7 @@
 
 ## 🎯 Overview
 
-The Swiss Energy Scenarios Decipher System is a sophisticated multi-agent AI platform developed at **ETH Zurich's Energy Science Center** that transforms complex energy scenario data from Switzerland's Energy Perspectives 2050+ into accessible, actionable insights.
+The Swiss Energy Scenarios Decipher System is a sophisticated multi-agent AI platform developed at **ETH Zurich Energy Science Center** in collaboration with **Hightech Zentrum Aargau AG**, **Energy Data Innovation Hub (EDIH)**, and **Swiss {ai} Weeks** that transforms complex energy scenario data from Switzerland's Energy Perspectives 2050+ into accessible, actionable insights.
 
 ### 🧩 The Challenge
 - Energy scenarios contain vast, complex datasets difficult for non-experts to interpret
@@ -301,34 +301,27 @@ We welcome contributions from the research community! Please:
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🙏 Acknowledgments
 
 ### Data & Research Partners
 - **Swiss Federal Office of Energy (SFOE)** for Energy Perspectives 2050+ dataset
 - **Swiss energy research community** for domain expertise and validation
-- **Prognos AG, TEP Energy, Infras** for original scenario modeling
 
 ### Technology Partners
 - **OpenAI** for advanced language model capabilities
 - **Open source community** for the excellent Python ecosystem
 
-### Academic Collaboration
-- **ETH Zurich Department of Mechanical and Process Engineering**
-- **ETH Zurich Department of Environmental Systems Science**
-- **Swiss Federal Institute of Technology community**
+### Academic & Industry Partners
+- **ETH Zurich Energy Science Center**
+- **Hightech Zentrum Aargau AG**
+- **Energy Data Innovation Hub (EDIH)**
+- **Swiss {ai} Weeks**
 
 ---
 
 ## 📞 Support & Contact
 
 ### Technical Support
-- **📧 Email**: support@esc.ethz.ch
 - **🐛 Issues**: [GitHub Issues](https://github.com/your-repo/swiss-energy-scenarios-decipher/issues)
 - **📚 Documentation**: Available in `/docs` folder
 
